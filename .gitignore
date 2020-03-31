@@ -1,3 +1,9 @@
+# out folder
+out/
+
+# IntelliJ config files
+Oca.iml
+
 # Compiled class file
 *.class
 

@@ -1,5 +1,6 @@
-import java.util.Scanner;
+package net.xeill.elpuig;
 
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -7,6 +8,7 @@ public class Main {
         int eleccion, eleccion2;
         int position=0;
         Dado d = new Dado();
+        Tablero t = new Tablero();
 
         do {
 
@@ -37,9 +39,31 @@ public class Main {
                         eleccion2 = input.nextInt();
                         switch (eleccion2) {
                             case 1:
-                                dado1.getNumeroAleatorio(1,6);//fallo
-                                jugador1.getposicion(jugador1.getposicion()+ Dado.getNumeroAleatorio(1,6));//sumar lo que nos ha dado el dado
+                              //    dado1.getNumeroAleatorio(1,6);//fallo
+
+                                // Donde voy a caer?????
+                                  int tirada = Dado.getNumeroAleatorio(1,6);
+                                  int pj = jugador1.getPosicion();
+                                  int nuevaP = pj + tirada;
+
+                                  // Es más grande de 63
+                                  // NO ->
+                                  if (t.tablero[nuevaP].oca == true) {
+
+                                  }
+
+                                  if (t.tablero[nuevaP].puente == true) {
+                                  //  tablero[nuevaP].conectada
+                                  }
+
+
+
+                                  // que se mueva el jugador
+                                  jugador1.setPosicion(jugador1.getPosicion()+ Dado.getNumeroAleatorio(1,6));//sumar lo que nos ha dado el dado
+
+
                                 // a la posicion del jugador
+
                                 break;
                             case 2:
                                 System.out.println("estas en la casilla " + position);
