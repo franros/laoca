@@ -4,7 +4,7 @@ Juego de la oca, con @MrJarek
 ## How to compile?
 ```bash
 # Go into the project source folder (src)
-$ cd juego-proyecto-uf2/src
+$ cd laoca/src
 
 # Compile the main class
 $ javac net/xeill/elpuig/Main.java
