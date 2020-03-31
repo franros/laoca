@@ -8,9 +8,9 @@ public class Main {
         int position=0;
         Dado d = new Dado();
 
+        do {
 
-
-            System.out.println("DAMAS (Produced by Jeremy and Fran)");
+            System.out.println("La oca (Produced by Jeremy and Fran)");
             System.out.println();
             System.out.println("Menú de inicio");
             System.out.println();
@@ -22,27 +22,30 @@ public class Main {
             System.out.println("elija una opcion");
             eleccion = input.nextInt();
 
-            if(eleccion !=3) {
+            if (eleccion != 3) {
                 switch (eleccion) {
                     case 1:
                         System.out.println("vamos a jugar. Como te llamas?");
                         Scanner sc = new Scanner(System.in);
-                        jugador=sc.nextLine();
-                        System.out.println("Que deseas hacer "+jugador+"? \n"+
+                        Jugador jugador1=new Jugador();
+                        Dado dado1= new Dado();
+                        System.out.println("Que deseas hacer " + jugador + "? \n" +
                                 "1.Tirar dados \n" +
-                                "2.Ver posicion actual \n"+
+                                "2.Ver posicion actual \n" +
                                 "3.Retirarse");
 
-                        eleccion2=input.nextInt();
-                             switch (eleccion2) {
-                                 case 1:
-                                     d.tirarDado();//fallo
-                                     break;
-                                 case 2:
-                                     System.out.println("estas en la casilla " + position);
-                                     break;
-                             }
-                     break;
+                        eleccion2 = input.nextInt();
+                        switch (eleccion2) {
+                            case 1:
+                                dado1.getNumeroAleatorio(1,6);//fallo
+                                jugador1.getposicion(jugador1.getposicion()+ Dado.getNumeroAleatorio(1,6));//sumar lo que nos ha dado el dado
+                                // a la posicion del jugador
+                                break;
+                            case 2:
+                                System.out.println("estas en la casilla " + position);
+                                break;
+                        }
+                        break;
 
                     case 2:
                         System.out.println("\n" +
@@ -62,6 +65,9 @@ public class Main {
                 }
 
             }
+
+
+        } while (eleccion != 1) ;
 
     }
 }
