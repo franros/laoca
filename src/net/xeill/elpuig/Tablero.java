@@ -7,7 +7,7 @@ public class Tablero{
     public Tablero() {
       this.tablero = new Casilla[64];
 
-
+      // Creación del tablero
       for (int i = 0; i < tablero.length; i++) {
 
         switch (i) {
@@ -17,85 +17,32 @@ public class Tablero{
         break;
 
           // Es una oca
-
         case 5:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 9:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 14:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 18:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 23:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 27:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 32:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 36:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 41:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 45:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 50:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 54:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
-        break;
-
         case 59:
-            tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
-            System.out.println("de oca a oca y tiro porque me toca");
+          tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 0);
+          System.out.println("de oca a oca y tiro porque me toca");
         break;
 
         case 63:
             tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 1);
             //DEBE ESTAR CONECTADA??ULTIMA CASILLA. también es el fin del juego
-            System.out.println("the winner is: "+ /*jugador*/");
+          //  System.out.println("the winner is: "+ /*jugador*/");
             break;
 
           // Es un puente
 
             case 6:
-                tablero[i] = new Casilla(i, false, true, false, false, false, false, false, 1, 0);
-                System.out.println("de puente a puente y tiras porque se te lleva la corriente!");
-            break;
-
             case 12:
                 tablero[i] = new Casilla(i, false, true, false, false, false, false, false, 1, 0);
                 System.out.println("de puente a puente y tiras porque se te lleva la corriente!");
@@ -105,7 +52,7 @@ public class Tablero{
 
             case 19:
                 tablero[i] = new Casilla(i, false, false, false, false, false, false, true, 0, 1);
-                System.out.println("Welcome to ""La Posada"" descansa dos turnos amigo.");
+                System.out.println("Welcome to \"La Posada\" descansa dos turnos amigo.");
             break;
 
              //el pozo
