@@ -42,19 +42,38 @@ public class Main {
                               //    dado1.getNumeroAleatorio(1,6);//fallo
 
                                 // Donde voy a caer?????
-                                  int tirada = Dado.getNumeroAleatorio(1,6);
-                                  int pj = jugador1.getPosicion();
-                                  int nuevaP = pj + tirada;
+                                int tirada = Dado.getNumeroAleatorio(1,6);
+                                int pj = jugador1.getPosicion();
+                                int nuevaP = pj + tirada;
 
-                                  // Es más grande de 63
-                                  // NO ->
-                                  if (t.tablero[nuevaP].oca == true) {
+                                // Es más grande de 63
+                                // NO ->
+                                if (t.tablero[nuevaP].oca == true) {
 
-                                  }
+                                }
 
-                                  if (t.tablero[nuevaP].puente == true) {
-                                  //  tablero[nuevaP].conectada
-                                  }
+                                else if (t.tablero[nuevaP].puente == true) {
+                                //  tablero[nuevaP].conectada
+                                // debo escribir todo aqui?? o asigno los datos de tablero?
+                                }
+                                else  if (t.tablero[nuevaP].posada == true) {
+
+                                }
+                                else if (t.tablero[nuevaP].pozo == true) {
+
+                                }
+                                else if (t.tablero[nuevaP].laberinto == true) {
+
+                                }
+                                else if (t.tablero[nuevaP].carcel == true) {
+
+                                }
+                                else if (t.tablero[nuevaP].dados == true) {
+
+                                }
+                                else if (t.tablero[nuevaP].calavera == true) {
+
+                                }
 
 
 
@@ -84,7 +103,7 @@ public class Main {
                                 "    Entrar al Jardín de la Oca: Es necesario sacar los puntos justos para entrar, en caso de exceso se retroceden tantas casillas como puntos sobrantes.\n");
                         break;
                     case 3:
-                        System.out.println("historia?");
+                        System.out.println("Gracias por jugar!");
                         break;
                 }
 
