@@ -36,8 +36,6 @@ public class Tablero{
 
         case 63:
             tablero[i] = new Casilla(i, true, false, false, false, false, false, false, 1, 1);
-            //DEBE ESTAR CONECTADA??ULTIMA CASILLA. también es el fin del juego
-          //  System.out.println("the winner is: "+ /*jugador*/");
             break;
 
           // Es un puente

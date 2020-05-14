@@ -1,94 +1,129 @@
 package net.xeill.elpuig;
 
+
 public class Main {
-    public static void main(String[] args) {
-        Dado d = new Dado();
-        Tablero t = new Tablero();
-        Dado dado= new Dado();
-        Arbitro arbitro = new Arbitro();
-        Menu menu = new Menu();
+	
+	static Jugador jugador = null;
+	static IA IA = null;
+	
+	public static void main(String[] args) {
+		Tablero t = new Tablero();
+		Arbitro arbitro = new Arbitro();
+		Menu menu = new Menu();
 
-        String nombre;
-        int eleccion;
-        int accion;
+		String nombre;
+		boolean juegoCargado = false;
+		int eleccion;
+		int accion;
+		int sinTirarIA = 0;
+		int sinTirarJg = 0;
 
-        String turno = "jugador";
 
-        do {
-          /*
-          System.out.println("1. Jugar");
-          System.out.println("2. Reglas");
-          System.out.println("3. Historia del juego");
-          System.out.println("4. Salir");
-          */
-            menu.inicio();
-            eleccion = menu.leerInicio();
+		String turno = "jugador";
 
-            switch (eleccion) {
-              case 1: // JUGAR
+		do {
+			/*
+			 * System.out.println("1. Jugar"); System.out.println("2. Reglas");
+			 * System.out.println("3. Salir");
+			 */
+			menu.inicio();
+			eleccion = menu.leerInicio();
 
-                  // Creamos el jugador
-                  menu.nombreJugador();
-                  nombre = menu.leerNombreJugador();
-                  Jugador jugador = new Jugador(nombre);
+			switch (eleccion) {
+			case 1: // JUGAR
 
-                  // Creamos la IA
-                  IA ia = new IA();
-                  ia.sayHello();
+				boolean findejuego = false;
+				if (juegoCargado == false) {
+					// Creamos al jugador
+					menu.nombreJugador();
+					nombre = menu.leerNombreJugador();
+					jugador = new Jugador(nombre);
+					// Creamos la IA
+					IA = new IA("Sergi");
+					IA.sayHello();
+					findejuego = false;
+				}
 
-                  boolean findejuego = false;
+				// El bucle del juego empieza aqui:
+				
+				while (!findejuego) {
 
-                  // El bucle del juego empieza aqu√≠:
-                  while (!findejuego) {
+					if (turno == "jugador") {
+						menu.accion(jugador);
+						accion = menu.leerAccion(jugador);
+						/*
+						 * "1. Tirar dados \n" + "2. Ver posicion actual. \n" + "3. Retirarse");
+						 */
+						switch (accion) {
+						case 1:
+							int tirada = Dado.getNumeroAleatorio(1, 6);
+							int posJug = jugador.getPosicion();
+							
+							if (sinTirarJg == 0) {
+								int nuevaP = arbitro.calcularNuevaPosicion(t, posJug, tirada, jugador, IA);
+								arbitro.moverJugador(t, jugador, nuevaP);
+								turno = arbitro.actualizarTurno(t, turno, nuevaP);
+								sinTirarJg = arbitro.actualizarSinTirar(t, turno, nuevaP);
+							} else {
+								System.out.println("°No puedes tirar todavÌa!");
+								turno = "IA";
+								sinTirarJg = sinTirarJg -1;
+							}
+										
+						
+							break;
+						case 2:
+							jugador.verPosicionActual();
+							break;
+						case 3:
+							jugador.retirarse();
+							findejuego = true;
+							break;
+						default:
+							break;
+						}
+					} else if (turno == "IA") {
+						int tirada = Dado.getNumeroAleatorio(1, 6);
+						int posIA = IA.getPosicion();
+						if (sinTirarIA == 0) {
+							System.out.println("Turno de la IA");
+							int nuevaP = arbitro.calcularNuevaPosicion(t, posIA, tirada, jugador, IA);
+							System.out.println("PosiciÛn:" + nuevaP + "\n");
+							arbitro.moverJugador(t, IA, nuevaP);
+							turno = arbitro.actualizarTurno(t, turno, nuevaP);
+							sinTirarIA = arbitro.actualizarSinTirar(t, turno, nuevaP);
+						} else {
+							System.out.println("°La IA no puede tirar todavÌa!");
+							turno = "jugador";
+							sinTirarIA = sinTirarIA -1;
+						}
 
-                    if (turno == "jugador") {
-                      menu.accion(jugador);
-                      accion = menu.leerAccion(jugador);
-                      /*
-                      "1. Tirar dados \n" +
-                      "2. Ver posici√≥n actual \n" +
-                      "3. Retirarse");
-                      */
-                      switch (accion) {
-                        case 1:
-                        int tirada = Dado.getNumeroAleatorio(1,6);
-                        int pj = jugador.getPosicion();
-                        int nuevaP = arbitro.calcularNuevaPosicion(t, pj, tirada);
 
-                        arbitro.moverJugador(t, jugador, nuevaP);
-                        turno = arbitro.actualizarTurno(t, turno, nuevaP);
+					} else {
+						// SERIA ERROR
+					}
 
-                        // Volvemos al bucle y seg√∫n el turno entrar√≠amos por un sitio o por otro, jugador o ia
+				}
+				// El bucle del juego acaba aqui
+				break;
 
-                          break;
-                        case 2: jugador.verPosicionActual();
-                          break;
-                        case 3: jugador.retirarse();
-                          findejuego = true;
-                          break;
-                        default:
-                          break;
-                      }
-                    } else if (turno == "IA") {
-                      // Aqu√≠ tirar√≠a nuestra IA
-                      //  arbitro.tiradaIA();
-                    } else {
-                      // SERIA ERROR
-                    }
+			case 2: // REGLAS
+				menu.reglas();
+				break;
+			case 3: // GUARDAR
+				if (jugador != null || IA != null) {
+					menu.guardar(jugador, IA);
+				} else {
+					System.out.println("No se puede guardar porque no hay partida iniciada");
+				}
+				
+				break;
+			case 4: // CARGAR
+				juegoCargado = menu.cargar();
+				break;
+			}
 
-                  }
-                  // El bucle del juego acaba aqu√≠
-                  break;
+		} while (eleccion != 3); // Mientras no sea salir juego nos mantenemos en el bucle principal
 
-              case 2: // REGLAS
-                  menu.reglas();
-                  break;
-              case 3: // HISTORIA
-                  menu.historia();
-                  break;
-          }
-
-        } while (eleccion != 4); // Mientras no sea salir juego nos mantenemos en el bucle principal
-
-    }
+	}
 }
