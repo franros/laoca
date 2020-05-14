@@ -1,5 +1,5 @@
 # laoca
-Juego de la oca, con @MrJarek
+Juego de la oca.
 
 ## How to compile?
 ```bash
@@ -11,4 +11,4 @@ $ javac net/xeill/elpuig/Main.java
 
 # Run the main
 $ java net.xeill.elpuig.Main
-```
+
