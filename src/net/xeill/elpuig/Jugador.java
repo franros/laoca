@@ -29,7 +29,7 @@ public class Jugador {
 	}
 
 	public void verPosicionActual() {
-		System.out.println("La posicion actual es: " + this.posicion+"\n");
+		System.out.println("\n La posici√≥n actual es: " + this.posicion + "\n");
 	}
 
 	public String toString() {
@@ -37,7 +37,7 @@ public class Jugador {
 	}
 
 	public void retirarse() {
-		System.out.println("Me retiro.¨¨!" + "\n");
+		System.out.println("Gracias por jugar " +nombre+ "!!! Esperamos volver a verte pronto!!\n");
 	}
 
 }

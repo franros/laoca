@@ -1,6 +1,5 @@
 package net.xeill.elpuig;
 
-
 public class IA extends Jugador{
   public IA(String nombre) {
     super(nombre);

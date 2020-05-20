@@ -7,14 +7,14 @@ public class Casilla {
   boolean oca;
   boolean puente;
   boolean pozo;
-  boolean calavera; // Conectarla con inicio
+  boolean calavera; // Conected to start
 
   boolean carcel;
   boolean laberinto;
   boolean posada;
 
-  int conectada; // Con cual casilla esta conectada
-  int standby; // Numero de turnos que te quedas en standby
+  int conectada; // Con qué casilla está conectada
+  int standby; // Número de turnos que te quedas en standby
 
 
   Casilla(int numero, boolean oca, boolean puente, boolean pozo, boolean calavera,
